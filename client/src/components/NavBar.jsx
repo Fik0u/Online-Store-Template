@@ -5,7 +5,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 const NavBar = () => {
   return (
     <div>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg"  style={{ marginBottom: '20px', backgroundColor: 'white' }}>
       <Container>
         <Navbar.Brand href="/">Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

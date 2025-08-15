@@ -1,1 +1,1 @@
-e-Commerce Store Template
+Online Store Template
