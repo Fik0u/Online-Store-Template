@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  background-color: rgba(35, 63, 63, 0.774);
+  color: white;
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
+}
