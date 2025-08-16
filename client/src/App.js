@@ -9,11 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { currentUser } from './JS/actions/authAction';
 import Profile from './pages/Profile';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
   const dispatch = useDispatch();
   const isAuth = useSelector(state => state.authReducer.isAuth);
+  const user = useSelector(state => state.authReducer.user);
+
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -37,6 +40,12 @@ function App() {
         <Route path="/login" element={<Login />} />
           </>
         )}
+        
+        {/* Private Route for Admin Dashboard */}
+        {user && user.isAdmin && (
+          <Route path="/admin" element={<Dashboard />} />
+        )}
+
         <Route path="/*" element={<Error />} />
       </Routes>
     </div>

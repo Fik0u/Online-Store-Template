@@ -1,6 +1,6 @@
 // Imports
 import axios from "axios";
-import { FAIL_AUTH, LOAD_AUTH, LOGOUT_AUTH, SUCCESS_AUTH } from "../actionTypes/authActionTypes";
+import { CURRENT_AUTH, FAIL_AUTH, LOAD_AUTH, LOGOUT_AUTH, SUCCESS_AUTH } from "../actionTypes/authActionTypes";
 
 
 //! Action creators
@@ -38,7 +38,7 @@ export const currentUser = () => async (dispatch) => {
             }
         }
         const result = await axios.get("/api/auth/current", config);
-        dispatch({ type: SUCCESS_AUTH, payload: result.data });
+        dispatch({ type: CURRENT_AUTH, payload: result.data });
     } catch (error) {
         dispatch({ type: FAIL_AUTH, payload: error.response.data.errors });
     }
