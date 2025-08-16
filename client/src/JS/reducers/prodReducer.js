@@ -4,7 +4,7 @@ import { ADD_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, FAIL_PRODUCT, GET_ONE_PRODUC
 // Initial state
 const initialState = {
     isLoad : false,
-    products: [],
+    prodsList: [],
     product: {},
     success: false,
     errors: []
@@ -17,7 +17,7 @@ const prodReducer = (state = initialState, { type, payload }) => {
 
         case ADD_PRODUCT: return { ...state, isLoad: false, products: [...state.products, payload], success: true};
 
-        case GET_PRODUCTS: return { ...state, isLoad: false, products: payload };
+        case GET_PRODUCTS: return { ...state, isLoad: false, prodsList: payload };
 
         case GET_ONE_PRODUCT: return { ...state, isLoad: false, product: payload };
 
