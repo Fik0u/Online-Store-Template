@@ -5,8 +5,23 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Error from './pages/Error';
 import NavBar from './components/NavBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { currentUser } from './JS/actions/authAction';
+import Profile from './pages/Profile';
 
 function App() {
+
+  const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.authReducer.isAuth);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(currentUser());
+    }
+  }, [dispatch]);
+
+
   return (
     <div className="App">
       <NavBar />
@@ -14,8 +29,14 @@ function App() {
       <p>Your one-stop shop for all your needs!</p>
       <Routes>
         <Route path="/" element={<Home />} />
+        {isAuth ? (
+          <Route path="/profile" element={<Profile />} />
+        ) : (
+          <>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+          </>
+        )}
         <Route path="/*" element={<Error />} />
       </Routes>
     </div>
