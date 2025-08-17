@@ -16,7 +16,6 @@ const AddProd = () => {
         title: '',
         description: '',
         price: 0,
-        imageUrl: '',
     });
 
     const handleChange = (e) => {

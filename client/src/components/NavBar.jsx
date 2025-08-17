@@ -7,6 +7,7 @@ import { logout } from '../JS/actions/authAction';
 const NavBar = () => {
 
   const isAuth = useSelector(state => state.authReducer.isAuth);
+  const user = useSelector(state => state.authReducer.user);
   const dispatch = useDispatch();
 
   return (
@@ -20,6 +21,7 @@ const NavBar = () => {
             <Nav.Link href="/">Home</Nav.Link>
             {isAuth ? (
               <>
+            {user.isAdmin && <Nav.Link href="/admin">Dashboard</Nav.Link>}
             <Nav.Link href="/profile">Profile</Nav.Link>
             <Nav.Link href="#" onClick={() => dispatch(logout())}>Logout</Nav.Link>
               </>
