@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        default: ''
+        default: 'https://aannet.org/global_graphics/default-store-350x350.jpg'
     }
 }, {
     timestamps: true
