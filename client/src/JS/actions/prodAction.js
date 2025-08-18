@@ -53,7 +53,8 @@ export const updateProd = (id, editedProd) => async (dispatch) => {
             }
         };
         const result = await axios.put(`/api/product/${id}`, editedProd, config);
-        dispatch({ type: EDIT_PRODUCT, payload: result.data.updatedProduct });
+        dispatch({ type: EDIT_PRODUCT, payload: result });
+        dispatch(getAllProds()); // Refresh the product list after editing
     } catch (error) {
         dispatch({ type: FAIL_PRODUCT, payload: error.response.data });
     }
