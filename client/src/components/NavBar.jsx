@@ -23,6 +23,7 @@ const NavBar = () => {
               <>
             {user.isAdmin && <Nav.Link href="/admin">Dashboard</Nav.Link>}
             <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="#" onClick={() => dispatch(logout())}>Logout</Nav.Link>
               </>
             ) : (

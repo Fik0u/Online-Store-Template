@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { currentUser } from './JS/actions/authAction';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
+import Cart from './pages/Cart';
 
 function App() {
 
@@ -33,7 +34,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {isAuth ? (
+          <>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
+          </>
         ) : (
           <>
         <Route path="/register" element={<Register />} />
