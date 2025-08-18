@@ -1,10 +1,17 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EditProd from './EditProd';
+import { deleteProd } from '../JS/actions/prodAction';
 
 const Product = (product) => {
+
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+      dispatch(deleteProd(product.product._id));
+  };
 
   const user = useSelector(state => state.authReducer.user);
 
@@ -18,7 +25,10 @@ const Product = (product) => {
           {product.product.description}
         </Card.Text>
         {user.isAdmin ? (
+          <>
           <EditProd product={product} />
+          <Button variant="danger" onClick={handleDelete}>Delete</Button>
+          </>
         ) : (
           <Button variant="primary">Add to cart</Button>
         )}

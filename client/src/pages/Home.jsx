@@ -7,8 +7,8 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const prodsList = useSelector((state) => state.prodReducer.prodsList)
-  
 
+  
   useEffect(() => {
     dispatch(getAllProds())
   }, [dispatch])
