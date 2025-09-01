@@ -38,7 +38,7 @@ const cartReducer = (state = initialState, { type, payload }) => {
         };
 
         case UPDATE_ITEM: {
-            const updatedItem = state.cartItems.map(item => item.product._id === payload._id
+            const updatedItem = state.cartItems.map(item => item.product._id === payload.id
                 ? { ...item, quantity: payload.quantity } : item);
             
                 const totalAmount = updatedItem.reduce((acc, item) => acc + item.product.price * item.quantity, 0);    

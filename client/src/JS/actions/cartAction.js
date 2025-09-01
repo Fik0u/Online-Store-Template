@@ -14,7 +14,8 @@ export const addToCart = (product, quantity) => async (dispatch, getState) => {
                 Authorization: localStorage.getItem('token')
             }
         }
-        const result = await axios.post('/api/cart/addTocart', { productId: product._id, quantity }, config)
+        const result = await axios.post('/api/cart/addTocart', { productId: product, quantity }, config)
+        console.log(result);
         dispatch({ type: ADD_TO_CART, payload: { product, quantity }})
         localStorage.setItem('cartItems', JSON.stringify(getState().cartReducer.cartItems));
     } catch (error) {

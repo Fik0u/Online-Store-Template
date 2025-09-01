@@ -13,7 +13,7 @@ const Cart = () => {
     const storedItems = JSON.parse(localStorage.getItem('cartItems'));
     if (storedItems) {
       storedItems.forEach(item => {
-        if (!cartItems.find(cartItem => cartItem.prodct._id === item.product._id)) {
+        if (!cartItems.find(cartItem => cartItem.product._id === item.product._id)) {
           dispatch(updateItem(item.product._id, item.quantity));
         }
       })
@@ -46,7 +46,7 @@ const Cart = () => {
         <div>
           {cartItems.map((item) => (
             <div key={item.product._id}>
-              <h4>{item.product.name}</h4>
+              <h6>{item.product.title}</h6>
               <p>Price: ${item.product.price}</p>
               <Form.Control type='number' value={item.quantity} min="1" onChange={(e) => handleQuantityChange(item.product._id, e.target.value)} />
               <p>Total : ${(item.product.price * item.quantity).toFixed(2)}</p>
