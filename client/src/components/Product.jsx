@@ -2,22 +2,24 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import EditProd from './EditProd';
 import { deleteProd } from '../JS/actions/prodAction';
+
 
 const Product = (product) => {
 
   const dispatch = useDispatch();
-
+  const user = useSelector(state => state.authReducer.user);
+  
   const handleDelete = () => {
       dispatch(deleteProd(product.product._id));
   };
 
-  const user = useSelector(state => state.authReducer.user);
-
   return (
     <div>
       <Card style={{ width: '18rem' }}>
+      <Link to={`/product/${product.product._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <Card.Img variant="top" src={product.product.imageUrl} />
       <Card.Body>
         <Card.Title>{product.product.title}</Card.Title>
@@ -30,9 +32,10 @@ const Product = (product) => {
           <Button variant="danger" onClick={handleDelete}>Delete</Button>
           </>
         ) : (
-          <Button variant="primary">Add to cart</Button>
+          <Button variant="primary">View Details</Button>
         )}
       </Card.Body>
+      </Link>
     </Card>
     </div>
   )

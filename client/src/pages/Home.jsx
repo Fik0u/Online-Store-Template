@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import ProdsList from '../components/ProdsList'
 import { getAllProds } from '../JS/actions/prodAction';
 
+
 const Home = () => {
 
   const dispatch = useDispatch();
   const prodsList = useSelector((state) => state.prodReducer.prodsList)
 
-  
   useEffect(() => {
     dispatch(getAllProds())
   }, [dispatch])

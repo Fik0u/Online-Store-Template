@@ -37,7 +37,8 @@ export const getOneProd = (id) => async (dispatch) => {
     dispatch({ type: LOAD_PRODUCT });
     try {
         const result = await axios.get(`/api/product/${id}`);
-        dispatch({ type: GET_ONE_PRODUCT, payload: result.data.oneProd });
+        console.log(result.data)
+        dispatch({ type: GET_ONE_PRODUCT, payload: result.data.prod });
     } catch (error) {
         dispatch({ type: FAIL_PRODUCT, payload: error.response.data });
     }

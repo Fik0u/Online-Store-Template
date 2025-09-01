@@ -11,6 +11,7 @@ import { currentUser } from './JS/actions/authAction';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Cart from './pages/Cart';
+import ProdDetails from './pages/ProdDetails';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
       <p>Your one-stop shop for all your needs!</p>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProdDetails />} />
         {isAuth ? (
           <>
           <Route path="/profile" element={<Profile />} />
