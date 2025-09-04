@@ -66,7 +66,7 @@ export const clearCart = () => async (dispatch) => {
                 Authorization: localStorage.getItem('token')
             }
         }
-        const result = await axios.put('/api/cart/clearCart', config);
+        const result = await axios.put('/api/cart/clearCart', {}, config);
         dispatch({ type: CLEAR_CART });
         localStorage.removeItem('cartItems');
     } catch (error) {
