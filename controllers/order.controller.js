@@ -65,7 +65,7 @@ exports.oneOrder = async (req, res) => {
         if (!order) {
             return res.status(404).json({ msg: 'Order not found' });
         }
-        if (order.user.toString() !== req.user.id && ! req.user.isAdmin) {
+        if (order.user.toString() !== req.user.id && !req.user.isAdmin) {
             return res.status(403).json({ msg: 'Access denied' });
         }
         res.status(200).json({ msg: 'Order retrieved successfully', order });

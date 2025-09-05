@@ -13,6 +13,9 @@ import Dashboard from './pages/Dashboard';
 import Cart from './pages/Cart';
 import ProdDetails from './pages/ProdDetails';
 import Checkout from './pages/Checkout';
+import OrderDetails from './pages/OrderDetails';
+import AllOrders from './components/AllOrders';
+import MyOrders from './components/MyOrders';
 
 function App() {
 
@@ -41,6 +44,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<Checkout />} />
+          <Route path="/myorders" element={<MyOrders />} />
+          <Route path="/order/:id" element={<OrderDetails />} />
           </>
         ) : (
           <>
@@ -51,7 +56,10 @@ function App() {
         
         {/* Private Route for Admin Dashboard */}
         {user && user.isAdmin && (
+          <>
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/orders" element={<AllOrders />} />
+          </>
         )}
 
         <Route path="/*" element={<Error />} />
