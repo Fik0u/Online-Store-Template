@@ -7,7 +7,7 @@ import { clearCart } from "./cartAction";
 //! Action Creators
 
 // New Order
-export const addOrder = (newOrder) => async (dispatch) => {
+export const addOrder = (newOrder, navigate) => async (dispatch) => {
     dispatch({ type: LOAD_ORDER });
     try {
         const config = {
@@ -18,6 +18,7 @@ export const addOrder = (newOrder) => async (dispatch) => {
         const result = await axios.post('/api/order/addOrder', newOrder, config);
         dispatch({ type: ADD_ORDER, payload: result.data });
         dispatch(clearCart());
+        navigate('/');
     } catch (error) {
         dispatch({ type: FAIL_ORDER, payload: error.response.data.errors });
     }

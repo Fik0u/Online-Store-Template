@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Cart from './pages/Cart';
 import ProdDetails from './pages/ProdDetails';
+import Checkout from './pages/Checkout';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <>
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<Checkout />} />
           </>
         ) : (
           <>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { clearCart, removeItem, updateItem } from '../JS/actions/cartAction';
 import { Button, Form } from 'react-bootstrap';
 
@@ -7,6 +8,7 @@ import { Button, Form } from 'react-bootstrap';
 const Cart = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cartItems = useSelector(state => state.cartReducer.cartItems);
 
   useEffect(() => {
@@ -33,6 +35,10 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
     localStorage.removeItem('cartItems');
+  };
+
+  const handleCheckout = () => {
+    navigate('/order');
   };
 
   const totalPrice = cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
@@ -63,7 +69,7 @@ const Cart = () => {
           <h3>Total: <span>${totalPrice.toFixed(2)}</span></h3>
           <div>
             <Button variant="warning" onClick={handleClearCart}>Clear Cart</Button>
-            <Button variant="success">Proceed to Checkout</Button>
+            <Button variant="success" onClick={handleCheckout}>Proceed to Checkout</Button>
           </div>
         </div>
       )}
